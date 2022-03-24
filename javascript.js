@@ -8,7 +8,13 @@ function game(){
     for(let i = 0; i<5; i++){
         playRound();
     } if(i = 5){
-        alert('Game Over');
+        if(playerScore>computerScore){
+            console.log("Game Over - Victory to Player")
+        } else if (computerScore>playerScore){
+            console.log("Game Over - Victory to Computer")
+        }else {
+            console.log("Game Over - Its a Tie")
+        }
     }
 }
 
@@ -33,7 +39,7 @@ function playRound(){
 // create a function that obtains the choice from the player the creates a variable based on the input and then assigns the value of the function to a variable inside playround
 
 function playerChoice () {
-    let input = prompt('Lets play ROCK, PAPER, SCISSORS, ready..... shoot');
+    let input = prompt('Lets play ROCK, PAPER, SCISSORS, 5 rounds ready..... shoot');
     return input.toUpperCase();
 }
     //while(input == null){
@@ -115,56 +121,3 @@ function  checkWinner (choiceC, choiceP){
 
 
 
-
-
-/*let playerScore =0;
-let computerScore = 0;
-let roundWinner = "";
-
-function getRandomChoice() {
-    let randomNumber = Math.floor(Math.random() * 3);
-    switch(randomNumber){
-        case 0:
-            return "ROCK"
-        case 1:
-            return "PAPER"
-        case 2:
-            return "SCISSORS"
-    }
-}
-
-const computerSelection = getRandomChoice()
-console.log(computerSelection);
-
-let getInput = prompt(" Rock, Paper, Scissors, Shoooot");
-playerSelection = getInput.toUpperCase();
-console.log(playerSelection);
-
-function playRound(){
-    if (computerSelection === playerSelection){
-        roundWinner = 'Tie'
-    }else if(
-        (computerSelection === 'ROCK' && playerSelection === 'SCISSORS')||
-        (computerSelection === 'PAPER' && playerSelection === 'ROCK') ||
-        (computerSelection === 'SCISSORS' && playerSelection === 'PAPER')
-    ) {
-        computerScore++
-        roundWinner = 'computer'
-    }else if(
-        (computerSelection === 'ROCK' && playerSelection === 'PAPER')||
-        (computerSelection === 'PAPER' && playerSelection === 'SCISSORS') ||
-        (computerSelection === 'SCISSORS' && playerSelection === 'ROCK')
-    ) {
-        playerScore++
-        roundWinner = 'player'
-        
-     }
-}
-   
-   playRound();
-   console.log(roundWinner);
-   console.log(computerScore, playerScore);
-   
-
-
-*/
