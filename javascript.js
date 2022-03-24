@@ -4,9 +4,20 @@ choices = ['ROCK','PAPER','SCISSORS'];
 function game(){
     let playerScore = 0;
     let computerScore = 0;
+    let tie =0; 
+    const playerCf = playerChoice();
+    const computerCf = computerChoice(); 
+    const winner = checkWinner(computerCf,playerCf);
     for(let i = 0; i<5; i++){
         playRound();
-        console.log(` The score is Player ${playerScore}, and Computer ${computerScore}`);
+        if (winner == computerCf){
+            ++computerScore;
+        }else if (winner == playerCf){
+            ++playerScore;
+        }else if (winner == 'Tie'){
+            ++tie;
+        }
+        console.log(`The score is Player ${playerScore}, and Computer ${computerScore}`);
     } if(i = 5){
         alert('Game Over');
     }
@@ -17,7 +28,7 @@ game();
 
 function playRound(){
   const playerCf = playerChoice();
-  const computerCf = computerChoice();
+  const computerCf = computerChoice(); 
   const winner = checkWinner(computerCf,playerCf);
   console.log(playerCf);
   console.log(computerCf);
