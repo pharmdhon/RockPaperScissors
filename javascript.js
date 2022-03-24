@@ -4,6 +4,8 @@ choices = ['ROCK','PAPER','SCISSORS'];
 let playerScore = 0;
 let computerScore = 0;
 
+
+// a function that plays 5 rounds and tallys score and declares a winner at the end
 function game(){
     for(let i = 0; i<5; i++){
         playRound();
@@ -18,9 +20,10 @@ function game(){
     }
 }
 
+//calling the function game
 game();
-//}
 
+// function to play one round, idntify the winner of he round and add a point to the winner
 function playRound(){
   const playerCf = playerChoice();
   const computerCf = computerChoice(); 
@@ -40,36 +43,36 @@ function playRound(){
 
 function playerChoice () {
     let input = prompt('Lets play ROCK, PAPER, SCISSORS, 5 rounds ready..... shoot');
-    return input.toUpperCase();
+    let check = validateInput(input);
+    while(input == null){
+        input = prompt (' Please only choose ROCK, PAPER, or SCISSORS');
+    } while(check == false){
+        input = prompt('Please only choose ROCK, PAPER, or SCISSORS');
+        input = input.toUpperCase();
+        check = validateInput(input);
+    } if(check == true)
+    input = input.toUpperCase();
+    return input;
 }
-    //while(input == null){
- //       input = prompt (' Please only choose ROCK, PAPER, or SCISSORS');
- //   }
-  //  input = input.toUpperCase(); 
-  //  let check = validateInput(input)
-  //  while(check == false){
- //      input = prompt('Please only choose ROCK, PAPER, or SCISSORS');
- //      input = input.toUpperCase();
- //      check = validateInput(input);
- //   }
-    
-   // console.log(input); 
-//}
 
-// create a function that randomly generates a cpu choice, take the result of the function and create a constant inside the playRound function
+    
+
+// create a function that randomly generates a cpu choice, then assign it to a variable inside a function later
 
 function computerChoice() {
     return choices[Math.floor(Math.random()*choices.length)];
 }
 
-//function validateInput(choice){
-   // if(choices.includes(choice)){
- //       return true;
-//       }else {
-//           return false;
-//       }
-//}
-// Remember 1 function for 1 task...dont try to jumble up the ability to check winners in playRound lets create a seperate function to check who the winner is 
+
+//function that ensures user can only select a choice from array choices.
+function validateInput(choice){
+    if(choices.includes(choice)){
+    return true;
+ }else{
+  return false;
+ }
+}
+
 function  checkWinner (choiceC, choiceP){
     if (choiceC === choiceP){
         return 'Tie';
