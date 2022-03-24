@@ -1,23 +1,12 @@
 // Possible Choices
 choices = ['ROCK','PAPER','SCISSORS'];
 
+let playerScore = 0;
+let computerScore = 0;
+
 function game(){
-    let playerScore = 0;
-    let computerScore = 0;
-    let tie =0; 
-    const playerCf = playerChoice();
-    const computerCf = computerChoice(); 
-    const winner = checkWinner(computerCf,playerCf);
     for(let i = 0; i<5; i++){
         playRound();
-        if (winner == computerCf){
-            ++computerScore;
-        }else if (winner == playerCf){
-            ++playerScore;
-        }else if (winner == 'Tie'){
-            ++tie;
-        }
-        console.log(`The score is Player ${playerScore}, and Computer ${computerScore}`);
     } if(i = 5){
         alert('Game Over');
     }
@@ -33,6 +22,12 @@ function playRound(){
   console.log(playerCf);
   console.log(computerCf);
   console.log(`The winner of the round is ${winner}`);
+  if (winner === 'computer'){
+      ++computerScore;
+  } else if (winner === 'player'){
+      ++playerScore;
+  }
+  console.log(`The score is Player ${playerScore}, and Computer ${computerScore}`);
 }
 
 // create a function that obtains the choice from the player the creates a variable based on the input and then assigns the value of the function to a variable inside playround
@@ -78,6 +73,7 @@ function  checkWinner (choiceC, choiceP){
         (choiceC === 'SCISSORS' && choiceP === 'PAPER')
     ) {
         return 'computer';
+
     }else if(
         (choiceC === 'ROCK' && choiceP === 'PAPER')||
         (choiceC === 'PAPER' && choiceP === 'SCISSORS') ||
