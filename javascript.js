@@ -2,8 +2,13 @@
 choices = ['ROCK','PAPER','SCISSORS'];
 
 function game(){
+    let playerScore = 0;
+    let computerScore = 0;
     for(let i = 0; i<5; i++){
         playRound();
+        console.log(` The score is Player ${playerScore}, and Computer ${computerScore}`);
+    } if(i = 5){
+        alert('Game Over');
     }
 }
 
@@ -13,17 +18,17 @@ game();
 function playRound(){
   const playerCf = playerChoice();
   const computerCf = computerChoice();
-  checkWinner(computerCf,playerCf);
+  const winner = checkWinner(computerCf,playerCf);
   console.log(playerCf);
   console.log(computerCf);
-  console.log(checkWinner(computerCf,playerCf));
+  console.log(`The winner of the round is ${winner}`);
 }
 
 // create a function that obtains the choice from the player the creates a variable based on the input and then assigns the value of the function to a variable inside playround
 
 function playerChoice () {
     let input = prompt('Lets play ROCK, PAPER, SCISSORS, ready..... shoot');
-    return input;
+    return input.toUpperCase();
 }
     //while(input == null){
  //       input = prompt (' Please only choose ROCK, PAPER, or SCISSORS');
@@ -38,14 +43,13 @@ function playerChoice () {
     
    // console.log(input); 
 //}
-let playerC = playerChoice();
+
 // create a function that randomly generates a cpu choice, take the result of the function and create a constant inside the playRound function
 
 function computerChoice() {
     return choices[Math.floor(Math.random()*choices.length)];
 }
 
-let computerC = computerChoice();
 //function validateInput(choice){
    // if(choices.includes(choice)){
  //       return true;
